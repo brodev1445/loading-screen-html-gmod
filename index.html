@@ -29,6 +29,22 @@
             color: #ffffff;
         }
 
+        .winter-background {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .winter-background svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
         .font-cartoon-title {
             font-family: 'Titan One', 'Fredoka', cursive, sans-serif;
         }
@@ -127,7 +143,7 @@
 <body class="relative flex flex-col justify-between">
 
     <!-- ARRIÈRE-PLAN : Village de Noël enneigé en style cartoon 2D vibrant et très saturé -->
-    <div class="fixed inset-0 z-0 pointer-events-none">
+    <div class="winter-background fixed inset-0 z-0 pointer-events-none">
         <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMax slice" class="w-full h-full">
             <!-- Étoiles cartoon jaune doré vif dans le ciel bleu électrique -->
             <g fill="#ffe600" stroke="#09112e" stroke-width="2.5" stroke-linejoin="round">
