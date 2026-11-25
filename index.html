@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystic Roleplay — Chargement</title>
+    <!-- Polices cartoon épaisses et arrondies : Titan One, Fredoka et JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=JetBrains+Mono:wght@600;700&family=Titan+One&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Réinitialisation et base pour Garry's Mod */
+        * {
+            box-sizing: border-box;
+            user-select: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Fredoka', -apple-system, BlinkMacSystemFont, sans-serif;
+            /* Ciel bleu nuit électrique et saturé */
+            background: linear-gradient(180deg, #0b1956 0%, #163399 48%, #2657d4 100%);
+            color: #ffffff;
+        }
+
+        .font-cartoon-title {
+            font-family: 'Titan One', 'Fredoka', cursive, sans-serif;
+        }
+
+        .font-mono-cartoon {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Titre cartoon épais avec contour sombre franc et ombre portée 2D */
+        .cartoon-title-text {
+            color: #ffffff;
+            -webkit-text-stroke: 3px #09112e;
+            paint-order: stroke fill;
+            text-shadow: 0 6px 0 #09112e, 0 10px 20px rgba(9, 17, 46, 0.55);
+        }
+
+        /* Petit contour cartoon pour les textes de statut */
+        .cartoon-text-outline {
+            text-shadow:
+                -1.5px -1.5px 0 #09112e,
+                 1.5px -1.5px 0 #09112e,
+                -1.5px  1.5px 0 #09112e,
+                 1.5px  1.5px 0 #09112e,
+                 0px    3px   0 #09112e;
+        }
+
+        /* Badge supérieur style cartoon */
+        .cartoon-pill {
+            background-color: #13286e;
+            border: 3px solid #09112e;
+            box-shadow: 0 4px 0 #09112e;
+        }
+
+        /* Barre de progression cartoon épaisse et saturée */
+        .cartoon-progress-track {
+            background-color: #0e1d52;
+            border: 4px solid #09112e;
+            box-shadow: 0 6px 0 #09112e;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes candy-scroll {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 0; }
+        }
+
+        .cartoon-progress-fill {
+            background-color: #ff2a4b;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                #ff2a4b 0px,
+                #ff2a4b 12px,
+                #00e5ff 12px,
+                #00e5ff 24px
+            );
+            background-size: 40px 40px;
+            animation: candy-scroll 1.1s linear infinite;
+            border-right: 4px solid #09112e;
+            transition: width 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        /* Reflet blanc brillant style dessin animé sur le haut de la barre */
+        .cartoon-progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 6px;
+            right: 6px;
+            height: 5px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.55);
+        }
+
+        /* Flottement doux du logo */
+        @keyframes logo-bob {
+            0%, 100% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-8px) rotate(1.5deg); }
+        }
+
+        .animate-logo-cartoon {
+            animation: logo-bob 3.4s ease-in-out infinite;
+        }
+
+        /* Fumée cartoon animée au-dessus des cheminées */
+        @keyframes puff-rise {
+            0% { transform: translateY(0) scale(0.7); opacity: 0.95; }
+            100% { transform: translateY(-34px) scale(1.35); opacity: 0; }
+        }
+
+        .smoke-1 { animation: puff-rise 2.8s ease-out infinite; }
+        .smoke-2 { animation: puff-rise 2.8s ease-out 1.4s infinite; }
+    </style>
+</head>
+<body class="relative flex flex-col justify-between">
+
+    <!-- ARRIÈRE-PLAN : Village de Noël enneigé en style cartoon 2D vibrant et très saturé -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMax slice" class="w-full h-full">
+            <!-- Étoiles cartoon jaune doré vif dans le ciel bleu électrique -->
+            <g fill="#ffe600" stroke="#09112e" stroke-width="2.5" stroke-linejoin="round">
+                <polygon points="190,115 198,133 218,135 203,148 207,167 190,157 173,167 177,148 162,135 182,133" />
+                <polygon points="520,75 526,88 540,90 529,99 532,113 520,106 508,113 511,99 500,90 514,88" />
+                <polygon points="1410,95 1417,111 1435,113 1421,125 1425,142 1410,133 1395,142 1399,125 1385,113 1403,111" />
+                <polygon points="1735,140 1741,153 1755,155 1744,164 1747,178 1735,171 1723,178 1726,164 1715,155 1729,153" />
+                <!-- Petites étoiles rondes brillantes -->
+                <circle cx="360" cy="185" r="5" />
+                <circle cx="740" cy="110" r="4.5" />
+                <circle cx="1190" cy="125" r="5" />
+                <circle cx="1590" cy="75" r="4.5" />
+            </g>
+
+            <!-- Montagnes enneigées bleu vif avec ombrages cel-shading nets -->
+            <g stroke="#09112e" stroke-width="4.5" stroke-linejoin="round">
+                <!-- Montagne Gauche -->
+                <polygon points="-40,840 310,490 660,840" fill="#2e6bff" />
+                <!-- Ombre cel-shading versant droit -->
+                <polygon points="310,490 660,840 420,840" fill="#1d4ed8" />
+                <!-- Calotte de neige cartoon -->
+                <polygon points="310,490 212,588 255,612 292,585 330,618 375,585 408,588" fill="#ffffff" />
+
+                <!-- Montagne Droite -->
+                <polygon points="1240,840 1600,465 1960,840" fill="#2e6bff" />
+                <!-- Ombre cel-shading versant droit -->
+                <polygon points="1600,465 1960,840 1710,840" fill="#1d4ed8" />
+                <!-- Calotte de neige cartoon -->
+                <polygon points="1600,465 1495,575 1540,602 1582,570 1625,606 1672,572 1705,575" fill="#ffffff" />
+
+                <!-- Montagne Centrale lointaine -->
+                <polygon points="620,840 960,555 1300,840" fill="#3b82f6" />
+                <polygon points="960,555 1300,840 1070,840" fill="#2563eb" />
+                <polygon points="960,555 875,626 915,648 955,622 995,650 1045,626" fill="#e0f2fe" />
+            </g>
+
+            <!-- Colline enneigée arrière-plan -->
+            <path d="M-20,815 Q480,715 960,795 T1940,750 L1940,1080 L-20,1080 Z"
+                  fill="#bde0fe" stroke="#09112e" stroke-width="4.5" />
+
+            <!-- Sapins vert émeraude saturé (Gauche) -->
+            <g stroke="#09112e" stroke-width="4" stroke-linejoin="round">
+                <!-- Sapin 1 -->
+                <g transform="translate(130, 675)">
+                    <rect x="34" y="110" width="16" height="26" fill="#92400e" />
+                    <polygon points="42,58 6,115 78,115" fill="#00b862" />
+                    <polygon points="42,30 12,82 72,82" fill="#00d26a" />
+                    <polygon points="42,4 18,48 66,48" fill="#10eb7c" />
+                </g>
+                <!-- Sapin 2 -->
+                <g transform="translate(220, 650) scale(1.12)">
+                    <rect x="34" y="110" width="16" height="26" fill="#92400e" />
+                    <polygon points="42,58 6,115 78,115" fill="#00b862" />
+                    <polygon points="42,30 12,82 72,82" fill="#00d26a" />
+                    <polygon points="42,4 18,48 66,48" fill="#10eb7c" />
+                </g>
+            </g>
+
+            <!-- CHALET CARTOON 1 : Rouge vif saturé & toit enneigé épais (Gauche) -->
+            <g transform="translate(350, 690)">
+                <!-- Fumée cartoon -->
+                <circle cx="122" cy="10" r="9" fill="#ffffff" stroke="#09112e" stroke-width="3" class="smoke-1" />
+                <circle cx="130" cy="4" r="11" fill="#ffffff" stroke="#09112e" stroke-width="3" class="smoke-2" />
+                <!-- Cheminée -->
+                <rect x="110" y="14" width="22" height="36" rx="3" fill="#b91c1c" stroke="#09112e" stroke-width="4" />
+                <!-- Corps du chalet rouge vif -->
+                <polygon points="18,62 82,16 146,62 146,136 18,136" fill="#ff2a4b" stroke="#09112e" stroke-width="4.5" stroke-linejoin="round" />
+                <!-- Ombre cel-shading côté droit -->
+                <rect x="116" y="62" width="30" height="74" fill="#d91636" stroke="#09112e" stroke-width="4" />
+                <!-- Porte bois saturé -->
+                <rect x="68" y="88" width="28" height="48" rx="4" fill="#d97706" stroke="#09112e" stroke-width="4" />
+                <circle cx="90" cy="113" r="3" fill="#ffe600" />
+                <!-- Fenêtres jaune doré vif -->
+                <rect x="32" y="76" width="24" height="24" rx="4" fill="#ffe600" stroke="#09112e" stroke-width="4" />
+                <line x1="44" y1="76" x2="44" y2="100" stroke="#09112e" stroke-width="3" />
+                <line x1="32" y1="88" x2="56" y2="88" stroke="#09112e" stroke-width="3" />
+
+                <rect x="108" y="76" width="24" height="24" rx="4" fill="#ffe600" stroke="#09112e" stroke-width="4" />
+                <line x1="120" y1="76" x2="120" y2="100" stroke="#09112e" stroke-width="3" />
+                <line x1="108" y1="88" x2="132" y2="88" stroke="#09112e" stroke-width="3" />
+
+                <!-- Toit enneigé épais arrondi cartoon -->
+                <path d="M4,66 Q82,4 160,66 Q164,78 150,78 L82,28 L14,78 Q0,78 4,66 Z"
+                      fill="#ffffff" stroke="#09112e" stroke-width="4.5" stroke-linejoin="round" />
+            </g>
+
+            <!-- CHALET CARTOON 2 : Bois orangé chaud & toit enneigé épais (Droite) -->
+            <g transform="translate(1390, 682) scale(1.08)">
+                <!-- Fumée cartoon -->
+                <circle cx="38" cy="10" r="9" fill="#ffffff" stroke="#09112e" stroke-width="3" class="smoke-1" />
+                <circle cx="30" cy="4" r="11" fill="#ffffff" stroke="#09112e" stroke-width="3" class="smoke-2" />
+                <!-- Cheminée -->
+                <rect x="28" y="14" width="22" height="36" rx="3" fill="#ff2a4b" stroke="#09112e" stroke-width="4" />
+                <!-- Corps du chalet bois chaud -->
+                <polygon points="18,62 82,16 146,62 146,136 18,136" fill="#ff8c1a" stroke="#09112e" stroke-width="4.5" stroke-linejoin="round" />
+                <!-- Ombre cel-shading -->
+                <rect x="116" y="62" width="30" height="74" fill="#e06d06" stroke="#09112e" stroke-width="4" />
+                <!-- Porte rouge -->
+                <rect x="68" y="88" width="28" height="48" rx="4" fill="#ff2a4b" stroke="#09112e" stroke-width="4" />
+                <circle cx="90" cy="113" r="3" fill="#ffe600" />
+                <!-- Fenêtres jaune doré vif -->
+                <rect x="32" y="76" width="24" height="24" rx="4" fill="#ffe600" stroke="#09112e" stroke-width="4" />
+                <line x1="44" y1="76" x2="44" y2="100" stroke="#09112e" stroke-width="3" />
+                <line x1="32" y1="88" x2="56" y2="88" stroke="#09112e" stroke-width="3" />
+
+                <rect x="108" y="76" width="24" height="24" rx="4" fill="#ffe600" stroke="#09112e" stroke-width="4" />
+                <line x1="120" y1="76" x2="120" y2="100" stroke="#09112e" stroke-width="3" />
+                <line x1="108" y1="88" x2="132" y2="88" stroke="#09112e" stroke-width="3" />
+
+                <!-- Toit enneigé épais arrondi cartoon -->
+                <path d="M4,66 Q82,4 160,66 Q164,78 150,78 L82,28 L14,78 Q0,78 4,66 Z"
+                      fill="#ffffff" stroke="#09112e" stroke-width="4.5" stroke-linejoin="round" />
+            </g>
+
+            <!-- Sapins vert émeraude saturé (Droite) -->
+            <g stroke="#09112e" stroke-width="4" stroke-linejoin="round">
+                <g transform="translate(1610, 660) scale(1.1)">
+                    <rect x="34" y="110" width="16" height="26" fill="#92400e" />
+                    <polygon points="42,58 6,115 78,115" fill="#00b862" />
+                    <polygon points="42,30 12,82 72,82" fill="#00d26a" />
+                    <polygon points="42,4 18,48 66,48" fill="#10eb7c" />
+                </g>
+                <g transform="translate(1720, 680)">
+                    <rect x="34" y="110" width="16" height="26" fill="#92400e" />
+                    <polygon points="42,58 6,115 78,115" fill="#00b862" />
+                    <polygon points="42,30 12,82 72,82" fill="#00d26a" />
+                    <polygon points="42,4 18,48 66,48" fill="#10eb7c" />
+                </g>
+            </g>
+
+            <!-- Sol enneigé blanc pur au premier plan avec contour foncé épais -->
+            <path d="M-20,835 Q540,790 1080,845 T1940,815 L1940,1080 L-20,1080 Z"
+                  fill="#ffffff" stroke="#09112e" stroke-width="5" />
+            <!-- Ombre bleutée cartoon sous la crête de neige -->
+            <path d="M-20,895 Q620,860 1240,905 T1940,880 L1940,1080 L-20,1080 Z"
+                  fill="#dbeafe" />
+        </svg>
+    </div>
+
+    <!-- PREMIER PLAN : Chute continue de flocons blancs nets via HTML5 Canvas -->
+    <canvas id="snowCanvas" class="fixed inset-0 z-10 pointer-events-none"></canvas>
+
+    <!-- EN-TÊTE CARTOON COMPACT : Carte & Mode de jeu -->
+    <header class="relative z-20 w-full flex justify-between items-center px-5 py-4 sm:px-9 sm:py-6 text-xs sm:text-sm font-bold">
+        <button id="music-toggle" type="button" class="cartoon-pill items-center gap-2 px-4 py-1.5 rounded-full text-white" style="display: none;">
+            ♫ Activer la musique
+        </button>
+        <div class="cartoon-pill ml-auto flex items-center gap-2.5 px-4 py-1.5 rounded-full">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-[#09112e]"></span>
+            <span id="server-map" class="font-mono-cartoon text-yellow-300">rp_rockford_v2b</span>
+            <span class="text-blue-300">•</span>
+            <span id="server-gamemode" class="text-white">DarkRP</span>
+        </div>
+    </header>
+
+    <!-- CENTRE : Croissant de lune blanc à double contour cartoon + Titre 'Mystic Roleplay' -->
+    <main class="relative z-20 flex flex-col items-center justify-center px-4 my-auto text-center">
+        <div class="animate-logo-cartoon mb-3">
+            <!-- SVG cartoon du croissant de lune blanc à double contour -->
+            <svg width="210" height="210" viewBox="0 0 240 240" class="w-36 h-36 sm:w-48 sm:h-48 overflow-visible">
+                <defs>
+                    <filter id="cartoonDrop" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="0" dy="7" stdDeviation="0" flood-color="#09112e" />
+                    </filter>
+                </defs>
+
+                <g filter="url(#cartoonDrop)">
+                    <!-- Croissant de lune blanc fidèle à mystic.png :
+                         Double contour épais foncé extérieur + remplissage blanc pur + trait intérieur cartoon -->
+                    <path d="M 142 46
+                             A 78 78 0 1 0 168 188
+                             A 60 60 0 1 1 142 46 Z"
+                          fill="#ffffff"
+                          stroke="#09112e"
+                          stroke-width="7"
+                          stroke-linejoin="round"
+                          stroke-linecap="round" />
+
+                    <!-- Reflet cel-shading bleu glacé subtil sur le croissant -->
+                    <path d="M 86 155 A 66 66 0 0 0 156 184 A 58 58 0 0 1 86 155 Z"
+                          fill="#bae6fd" />
+                </g>
+            </svg>
+        </div>
+
+        <!-- Titre exact demandé : 'Mystic Roleplay' en police cartoon épaisse -->
+        <h1 class="font-cartoon-title cartoon-title-text text-4xl sm:text-6xl md:text-7xl tracking-wide leading-tight">
+            Mystic Roleplay
+        </h1>
+    </main>
+
+    <!-- BAS DE L'ÉCRAN : Uniquement la barre de progression cartoon vibrante et saturée -->
+    <footer class="relative z-20 w-full max-w-3xl mx-auto px-6 pb-8 sm:pb-12">
+        <!-- Ligne supérieure : Statut traduit en français + Pourcentage -->
+        <div class="flex justify-between items-end mb-2.5 gap-4">
+            <span id="status-text" class="cartoon-text-outline text-sm sm:text-lg font-bold text-white truncate">
+                Connexion au serveur en cours...
+            </span>
+            <span id="progress-percent" class="font-mono-cartoon cartoon-text-outline text-base sm:text-xl font-bold text-yellow-300 shrink-0">
+                0%
+            </span>
+        </div>
+
+        <!-- Barre de progression cartoon épaisse -->
+        <div class="cartoon-progress-track w-full h-7 sm:h-8 rounded-full p-0.5">
+            <div id="progress-bar" class="cartoon-progress-fill h-full rounded-full" style="width: 0%;"></div>
+        </div>
+
+        <!-- Ligne inférieure : Nom de l'addon en cours + Compteur de fichiers -->
+        <div class="flex justify-between items-center mt-2.5 gap-4 text-xs sm:text-sm font-bold">
+            <span id="file-text" class="font-mono-cartoon cartoon-text-outline text-cyan-200 truncate max-w-[72%]">
+                En attente des fichiers...
+            </span>
+            <span id="files-count" class="font-mono-cartoon cartoon-text-outline text-white shrink-0">
+                0 / 0 fichiers
+            </span>
+        </div>
+    </footer>
+
+    <audio id="background-music" src="./music.mp3" preload="auto" loop></audio>
+
+    <!-- SCRIPTS : Fonctions natives Garry's Mod + Simulation navigateur + Neige Canvas -->
+    <script>
+        // ==========================================
+        // 1. ÉTAT DU CHARGEMENT & RÉFÉRENCES UI
+        // ==========================================
+        const state = {
+            totalFiles: 0,
+            neededFiles: 0,
+            isGMod: false,
+            simulationTimer: null
+        };
+
+        const ui = {
+            status: document.getElementById('status-text'),
+            file: document.getElementById('file-text'),
+            percent: document.getElementById('progress-percent'),
+            bar: document.getElementById('progress-bar'),
+            count: document.getElementById('files-count'),
+            map: document.getElementById('server-map'),
+            gamemode: document.getElementById('server-gamemode')
+        };
+
+        const backgroundMusic = document.getElementById('background-music');
+        const musicToggle = document.getElementById('music-toggle');
+        backgroundMusic.volume = 0.08;
+        const musicPlayback = backgroundMusic.play();
+        if (musicPlayback && typeof musicPlayback.catch === 'function') {
+            musicPlayback.catch(() => {
+                musicToggle.style.display = 'flex';
+            });
+        }
+
+        musicToggle.addEventListener('click', () => {
+            const playback = backgroundMusic.play();
+            if (playback && typeof playback.then === 'function') {
+                playback.then(() => {
+                    musicToggle.style.display = 'none';
+                }).catch(() => {
+                    musicToggle.textContent = 'Musique indisponible';
+                });
+            } else {
+                musicToggle.style.display = 'none';
+            }
+        });
+
+        function setProgress(pct) {
+            const safePct = Math.max(0, Math.min(100, Math.round(pct)));
+            ui.bar.style.width = safePct + '%';
+            ui.percent.textContent = safePct + '%';
+        }
+
+        function stopPreviewSimulation() {
+            if (state.simulationTimer) {
+                clearInterval(state.simulationTimer);
+                state.simulationTimer = null;
+            }
+        }
+
+        function refreshCounters() {
+            if (state.totalFiles > 0) {
+                const downloaded = Math.max(0, state.totalFiles - state.neededFiles);
+                ui.count.textContent = `${downloaded} / ${state.totalFiles} fichiers`;
+                setProgress((downloaded / state.totalFiles) * 100);
+            } else {
+                ui.count.textContent = "Prêt";
+            }
+        }
+
+        // ==========================================
+        // 2. HOOKS NATIFS GARRY'S MOD (sv_loadingurl)
+        // ==========================================
+        window.GameDetails = function(servername, serverurl, mapname, maxplayers, steamid, gamemode) {
+            state.isGMod = true;
+            stopPreviewSimulation();
+
+            if (mapname) ui.map.textContent = mapname;
+            if (gamemode) ui.gamemode.textContent = gamemode;
+        };
+
+        window.SetStatusChanged = function(status) {
+            state.isGMod = true;
+            stopPreviewSimulation();
+
+            const statusTranslations = {
+                "Retrieving server info...": "Récupération des infos du serveur...",
+                "Getting addon info for": "Vérification des addons Workshop...",
+                "Mounting Addons": "Montage des addons en cours...",
+                "Workshop Complete": "Addons Workshop terminés !",
+                "Sending client info...": "Envoi des informations client...",
+                "Starting Lua...": "Démarrage des scripts Lua..."
+            };
+
+            let translated = status;
+            for (const [en, fr] of Object.entries(statusTranslations)) {
+                if (status.includes(en)) {
+                    translated = fr;
+                    break;
+                }
+            }
+
+            ui.status.textContent = translated;
+
+            if (status.includes("Sending client info")) {
+                setProgress(92);
+            } else if (status.includes("Starting Lua")) {
+                setProgress(100);
+                ui.file.textContent = "Entrée sur Mystic Roleplay...";
+            }
+        };
+
+        window.SetFilesTotal = function(total) {
+            state.isGMod = true;
+            stopPreviewSimulation();
+            state.totalFiles = parseInt(total, 10) || 0;
+            refreshCounters();
+        };
+
+        window.SetFilesNeeded = function(needed) {
+            state.isGMod = true;
+            stopPreviewSimulation();
+            state.neededFiles = parseInt(needed, 10) || 0;
+            refreshCounters();
+        };
+
+        window.DownloadingFile = function(fileName) {
+            state.isGMod = true;
+            stopPreviewSimulation();
+
+            ui.status.textContent = "Téléchargement des addons...";
+            ui.file.textContent = fileName;
+            refreshCounters();
+        };
+
+        // ==========================================
+        // 3. SIMULATION FLUIDE EN NAVIGATEUR CLASSIQUE
+        // ==========================================
+        function startPreviewSimulation() {
+            const isGModClient = /GMod|Awesomium|Valve/i.test(navigator.userAgent);
+            if (isGModClient || state.isGMod) return;
+
+            const sampleAddons = [
+                "addons/mystic_core/lua/autorun/sh_mystic.lua",
+                "materials/mystic/logo/crescent_xmas.vtf",
+                "models/mystic/props/christmas_tree.mdl",
+                "sound/mystic/noel/jingle_bells.wav",
+                "addons/mystic_hud/lua/vgui/cl_hud.lua",
+                "materials/models/mystic/vehicles/santa_truck.vmt",
+                "addons/mystic_jobs/lua/config/sh_metiers.lua",
+                "maps/rp_rockford_v2b.bsp"
+            ];
+
+            const total = 40;
+            let current = 0;
+
+            ui.status.textContent = "Téléchargement des addons...";
+            ui.count.textContent = `0 / ${total} fichiers`;
+
+            state.simulationTimer = setInterval(() => {
+                if (state.isGMod) {
+                    stopPreviewSimulation();
+                    return;
+                }
+
+                current++;
+                if (current <= total) {
+                    ui.file.textContent = sampleAddons[current % sampleAddons.length];
+                    ui.count.textContent = `${current} / ${total} fichiers`;
+                    setProgress((current / total) * 100);
+
+                    if (current === total) {
+                        ui.status.textContent = "Démarrage des scripts Lua...";
+                        ui.file.textContent = "Bienvenue sur Mystic Roleplay !";
+                    }
+                } else if (current > total + 8) {
+                    current = 0;
+                    ui.status.textContent = "Téléchargement des addons...";
+                    setProgress(0);
+                }
+            }, 240);
+        }
+
+        // ==========================================
+        // 4. NEIGE CARTOON NETTE SUR HTML5 CANVAS
+        // ==========================================
+        const canvas = document.getElementById('snowCanvas');
+        const ctx = canvas.getContext('2d');
+        let flakes = [];
+
+        function resizeSnowCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function initSnowflakes() {
+            const count = Math.min(130, Math.floor((window.innerWidth * window.innerHeight) / 13000));
+            flakes = [];
+
+            for (let i = 0; i < count; i++) {
+                flakes.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: 2.5 + Math.random() * 3.8,
+                    speedY: 1.0 + Math.random() * 1.8,
+                    speedX: -0.3 + Math.random() * 0.6,
+                    phase: Math.random() * Math.PI * 2,
+                    wobbleSpeed: 0.015 + Math.random() * 0.02
+                });
+            }
+        }
+
+        function drawSnowflakes() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = 0; i < flakes.length; i++) {
+                const f = flakes[i];
+                f.phase += f.wobbleSpeed;
+                f.y += f.speedY;
+                f.x += f.speedX + Math.sin(f.phase) * 0.55;
+
+                if (f.y > canvas.height + 10) {
+                    f.y = -10;
+                    f.x = Math.random() * canvas.width;
+                }
+                if (f.x > canvas.width + 10) f.x = -10;
+                if (f.x < -10) f.x = canvas.width + 10;
+
+                // Flocon blanc net avec léger contour sombre cartoon pour les plus gros
+                ctx.beginPath();
+                ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2);
+                ctx.fillStyle = '#ffffff';
+                ctx.fill();
+
+                if (f.radius > 4.2) {
+                    ctx.lineWidth = 1.5;
+                    ctx.strokeStyle = 'rgba(9, 17, 46, 0.55)';
+                    ctx.stroke();
+                }
+            }
+
+            requestAnimationFrame(drawSnowflakes);
+        }
+
+        window.addEventListener('resize', () => {
+            resizeSnowCanvas();
+            initSnowflakes();
+        });
+
+        window.onload = function() {
+            resizeSnowCanvas();
+            initSnowflakes();
+            drawSnowflakes();
+
+            setTimeout(() => {
+                if (!state.isGMod) {
+                    startPreviewSimulation();
+                }
+            }, 1200);
+        };
+    </script>
+</body>
+</html>
